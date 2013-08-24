@@ -1,0 +1,198 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "colores";
+
+@mixin circle($width : 100px) {
+	width: $width;
+	height: $width;
+	@include border-radius($width);
+}
+
+//ANIMATION 
+
+@-webkit-keyframes playing {
+  0%   { width:0%; }
+  100% { width: 100%; }
+}
+@-moz-keyframes playing {
+  0%   { width:0%; }
+  100% { width: 100%; }
+}
+@-o-keyframes playing {
+  0%   { width:0%; }
+  100% { width: 100%; }
+}
+@keyframes playing {
+  0%   { width:0%; }
+  100% { width: 100%; }
+}
+
+*{
+	box-sizing:border-box;
+}
+
+body{
+	background-color: $clouds + 10;
+	font-size: 16px;
+}
+
+.container{
+	width: 300px;
+	margin: auto;
+	display: block;
+	margin-top: 1em;
+}
+#player{
+	background-color: $clouds;
+	display: block;
+	overflow: hidden;
+	padding: 0 0 1em 0;
+	@include border-radius(5px);
+	@include box-shadow($clouds - 20 0 5px 10px);
+}
+
+.info{
+	padding: 1em;
+	position: relative;
+	font-family: 'Merriweather Sans';
+	color: $silver - 50;
+}
+
+.love{
+	position: absolute;
+	top:.5em;
+	right: 1em;
+}
+
+.caratula{
+	width: 300px;
+	overflow: hidden;
+	height: 220px;
+	position: relative;
+	img{
+		width: 100%;
+		position: relative;
+	}
+}
+
+.controls{
+	padding: 1em;
+	ul{
+		li{
+			display: inline-block;
+			margin-right: .17em;
+			padding: .9em;
+			@include border-radius(50%);
+			@include background-image(linear-gradient(top,$asbestos, $concrete));
+			text-align: center;
+			@include transition-property(all);
+			@include transition-duration(.2s);
+			@include transition-timing-function(ease-in);
+			&:hover{
+				cursor: pointer;
+				// background-color: $turquoise;
+				@include background-image(linear-gradient(top,$turquoise, $greensea));
+			}
+		}
+
+	}
+}
+
+.play{
+	padding: 1.6em !important;
+}
+
+.time{
+	width: 100%;
+	background-color: $clouds - 30;
+	height: 8px;
+	display: block;
+	overflow: hidden;
+}
+
+.progress{
+	-webkit-animation: playing 60s infinite; /* Safari 4+ */
+	-moz-animation:    playing 60s infinite; /* Fx 5+ */
+	-o-animation:      playing 60s infinite; /* Opera 12+ */
+	animation:         playing 60s infinite;
+	display: block;
+	height: 8px;
+	@include background-image(linear-gradient(left,$pumpkin, $sunflower));
+}
+
+
+.icon-heart{
+	color: $alizarin;
+}
+
+.icon-star-empty{
+	color: $clouds - 50;
+}
+
+h2{
+	font-size: 1.4em;
+	margin-bottom: .2em;
+	@include text-shadow(white 1px 1px 0);
+	font-weight: 700;
+}
+
+h3{
+	font-size: 1em;
+	font-weight: 400;
+	color: $silver - 20;
+}
+.elapsed{
+	margin-bottom: 1em;
+	font-size: .8em;
+	color: $silver + 5;
+}
+
+
+.btn{
+	font-size: 1em;
+	color: $clouds;
+}
+
+.more{
+	background-color: $turquoise;
+	padding: 1em;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 999;
+	color: white;
+	@include border-top-right-radius(5px);
+	@include border-bottom-right-radius(5px);
+	@include border-bottom-left-radius(5px);
+	&:hover + .bio{
+		width: 100%;
+		height: 100%;
+		padding: 1.5em;
+	}
+
+}
+.bio{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0%;
+	background-color: $turquoise;
+	overflow: hidden;
+	color: white;
+	font-family: 'Roboto';
+	font-weight: 100;
+	font-size: .8em;
+	line-height: 1.5em;
+	text-align: center;
+	@include border-top-right-radius(5px);
+	@include transition-property(all);
+	@include transition-duration(.2s);
+	@include transition-timing-function(ease-in);
+	h2{
+		font-family: 'Roboto';
+		text-shadow: none;
+		font-weight: 400;
+		margin-bottom: .5em;
+	}
+}
